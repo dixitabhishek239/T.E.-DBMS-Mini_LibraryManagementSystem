@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.SearchBookController">
+   <top>
+      <HBox prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: navy blue;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#BackButtonClick" text="Back" HBox.hgrow="ALWAYS" />
+            <Region prefHeight="30.0" prefWidth="133.0" HBox.hgrow="ALWAYS" />
+            <Label text="Search Book" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox prefHeight="28.0" prefWidth="200.0">
+               <children>
+                  <Label prefWidth="100.0" text="Department:" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="departmentChoiceBox" prefHeight="27.0" prefWidth="142.0" HBox.hgrow="ALWAYS" />
+                  <Label prefHeight="23.0" prefWidth="83.0" text="     Subject:" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="subjectChoiceBox" prefHeight="27.0" prefWidth="186.0" HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="27.0" prefWidth="25.0" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="75.0" text="Name:" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameText" prefHeight="27.0" prefWidth="180.0" HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="75.0" text="Author:" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="authorText" prefHeight="27.0" prefWidth="204.0" HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="200.0">
+               <children>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#SearchButtonClick" prefHeight="25.0" prefWidth="150.0" text="Search" HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="230.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane>
+                     <content>
+                        <TableView prefHeight="730.0" prefWidth="1275.0">
+                          <columns>
+                            <TableColumn fx:id="bookNameId" prefWidth="150.0" text="Book Name" />
+                            <TableColumn fx:id="authorNameId" prefWidth="150.0" text="Author Name" />
+                              <TableColumn fx:id="subjectId" prefWidth="150.0" text="Subject" />
+                              <TableColumn fx:id="departmentId" prefWidth="150.0" text="Department" />
+                              <TableColumn fx:id="selectChoiceBoxId" prefWidth="150.0" text="Select" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="200.0">
+               <children>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="issueButton" mnemonicParsing="false" onAction="#IssueButtonClick" prefHeight="25.0" prefWidth="150.0" text="Issue" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="25.0" right="25.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
