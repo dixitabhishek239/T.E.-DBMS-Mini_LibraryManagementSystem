@@ -52,7 +52,7 @@ public class AdminPageController {
     	Parent myNewScene;
 		try {
 			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
-			Stage stage = (Stage) addBookButton.getScene().getWindow();
+			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
 	    	stage.setTitle("ISSUED BOOKS");
@@ -65,17 +65,50 @@ public class AdminPageController {
 
     @FXML
     void SearchBooksButtonClick(ActionEvent event) {
-
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/SearchBook.fxml").openStream());
+			Stage stage = (Stage) searchBooksButton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("SEARCH BOOKS");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void SendMailButtonClick(ActionEvent event) {
-
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/EmailScreen.fxml").openStream());
+			Stage stage = (Stage) sendMailButton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("EMAIL");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void TotalBooksButtonClick(ActionEvent event) {
-
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/BookDetails.fxml").openStream());
+			Stage stage = (Stage) totalBooksButton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("BOOK DETAILS");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
