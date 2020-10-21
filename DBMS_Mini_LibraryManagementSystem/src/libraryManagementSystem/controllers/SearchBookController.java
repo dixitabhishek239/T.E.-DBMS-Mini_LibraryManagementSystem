@@ -22,9 +22,6 @@ public class SearchBookController {
     private ChoiceBox<?> departmentChoiceBox;
 
     @FXML
-    private ChoiceBox<?> subjectChoiceBox;
-
-    @FXML
     private TextField nameText;
 
     @FXML
@@ -69,6 +66,18 @@ public class SearchBookController {
 
     @FXML
     void IssueButtonClick(ActionEvent event) {
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
+			Stage stage = (Stage) issueButton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("ISSUED BOOKS");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
     }
 

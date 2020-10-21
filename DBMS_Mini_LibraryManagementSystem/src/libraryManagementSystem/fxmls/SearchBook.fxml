@@ -49,12 +49,6 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="departmentChoiceBox" prefHeight="27.0" prefWidth="142.0" HBox.hgrow="ALWAYS" />
-                  <Label prefHeight="23.0" prefWidth="83.0" text="     Subject:" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="subjectChoiceBox" prefHeight="27.0" prefWidth="186.0" HBox.hgrow="ALWAYS" />
                   <Region prefHeight="27.0" prefWidth="25.0" />
                </children>
                <padding>
