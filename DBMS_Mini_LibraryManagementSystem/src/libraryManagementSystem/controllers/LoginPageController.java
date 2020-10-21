@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Hyperlink;
 
 public class LoginPageController {
 
@@ -22,10 +23,11 @@ public class LoginPageController {
     private Button loginButton;
 
     @FXML
-    private Button newUserButton;
+    private Hyperlink newUserLink;
 
     @FXML
-    private Button forgotPassword;
+    private Hyperlink forgotPasswordLink;
+
 
     @FXML
     void LoginClick(ActionEvent event) {

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class AdminPageController {
 
     @FXML
-    private Button backButton;
+    private Button logoutbutton;
 
     @FXML
     private Button addBookButton;
@@ -112,8 +112,19 @@ public class AdminPageController {
     }
 
     @FXML
-    void backButtonClick(ActionEvent event) {
-
+    void LogoutButtonClick(ActionEvent event) {
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/LoginPage.fxml").openStream());
+			Stage stage = (Stage) logoutbutton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("LOGIN");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
 }

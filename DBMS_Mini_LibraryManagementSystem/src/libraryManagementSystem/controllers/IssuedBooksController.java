@@ -23,9 +23,6 @@ public class IssuedBooksController {
     private TableColumn<?, ?> departmentId;
 
     @FXML
-    private TableColumn<?, ?> yearId;
-
-    @FXML
     private TableColumn<?, ?> bookNameId;
 
     @FXML

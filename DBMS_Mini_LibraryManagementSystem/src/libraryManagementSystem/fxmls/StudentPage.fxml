@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.StudentPageController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.StudentPageController">
    <top>
       <HBox prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: navy blue;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -20,7 +19,7 @@
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
          <children>
-            <Button fx:id="backbutton" mnemonicParsing="false" onAction="#BackbuttonClick" prefHeight="25.0" prefWidth="50.0" text="Back" HBox.hgrow="ALWAYS" />
+            <Button fx:id="logoutbutton" mnemonicParsing="false" onAction="#LogoutButtonClick" prefHeight="25.0" prefWidth="60.0" text="Logout" HBox.hgrow="ALWAYS" />
             <Region prefHeight="30.0" prefWidth="118.0" HBox.hgrow="ALWAYS" />
             <Label text="Student Page" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
@@ -42,7 +41,7 @@
                   <Region prefHeight="27.0" prefWidth="102.0" />
                   <Button fx:id="searchBook" mnemonicParsing="false" onAction="#SearchBookButton" prefHeight="25.0" prefWidth="150.0" text="Search Book" />
                   <Region prefHeight="200.0" prefWidth="200.0" />
-                  <Button fx:id="issueBook" mnemonicParsing="false" onAction="#IssueBookClick" prefHeight="25.0" prefWidth="150.0" text="Issue Book" />
+                  <Button fx:id="issuedBook" mnemonicParsing="false" onAction="#IssuedBookClick" prefHeight="25.0" prefWidth="150.0" text="Issued Book" />
                   <Region prefHeight="27.0" prefWidth="99.0" />
                </children>
                <padding>

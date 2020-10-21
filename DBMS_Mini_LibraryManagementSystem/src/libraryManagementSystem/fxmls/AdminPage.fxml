@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AdminPageController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AdminPageController">
    <top>
       <HBox prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: navy blue;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" prefHeight="25.0" prefWidth="50.0" text="Back" />
+            <Button fx:id="logoutbutton" mnemonicParsing="false" onAction="#LogoutButtonClick" prefHeight="25.0" prefWidth="60.0" text="Logout" />
             <Region prefHeight="75.0" prefWidth="168.0" HBox.hgrow="ALWAYS" />
             <Label prefWidth="130.0" text="Admin Page" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>

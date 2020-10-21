@@ -39,7 +39,7 @@ public class AddBooksController {
     private ChoiceBox<?> departmentChoiceBox;
 
     @FXML
-    private TextField subjectText;
+    private ChoiceBox<?> subjectChoiceBox;
 
     @FXML
     private TextField priceText;

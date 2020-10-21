@@ -3,8 +3,7 @@ package libraryManagementSystem.controllers;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,29 +12,24 @@ import javafx.stage.Stage;
 public class StudentPageController {
 
     @FXML
-    private Button backbutton;
+    private Button logoutbutton;
 
     @FXML
     private Button searchBook;
 
     @FXML
-    private Button issueBook;
+    private Button issuedBook;
 
     @FXML
     private Button submitButton;
 
     @FXML
-    void BackbuttonClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void IssueBookClick(ActionEvent event) {
+    void IssuedBookClick(ActionEvent event) {
     	FXMLLoader loader = new FXMLLoader();
     	Parent myNewScene;
 		try {
 			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
-			Stage stage = (Stage) issueBook.getScene().getWindow();
+			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
 	    	stage.setTitle("ISSUED BOOKS");
@@ -43,6 +37,24 @@ public class StudentPageController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+    }
+
+    @FXML
+    void LogoutButtonClick(ActionEvent event) {
+    	FXMLLoader loader = new FXMLLoader();
+    	Parent myNewScene;
+		try {
+			myNewScene = loader.load(getClass().getResource("../fxmls/LoginPage.fxml").openStream());
+			Stage stage = (Stage) logoutbutton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+	    	stage.setTitle("LOGIN");
+	    	stage.show(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
     }
 
     @FXML
@@ -60,6 +72,7 @@ public class StudentPageController {
 			e.printStackTrace();
 		}
     }
+    
 
     @FXML
     void SubmitButtonClick(ActionEvent event) {
@@ -75,6 +88,7 @@ public class StudentPageController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
     }
 
 }
