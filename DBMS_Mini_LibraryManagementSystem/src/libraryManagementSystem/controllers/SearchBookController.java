@@ -85,5 +85,7 @@ public class SearchBookController {
     void SearchButtonClick(ActionEvent event) {
 
     }
+    
+    public void initialize() {}
 
 }

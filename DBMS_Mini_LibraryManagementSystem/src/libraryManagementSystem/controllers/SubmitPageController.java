@@ -63,5 +63,6 @@ public class SubmitPageController {
     void SubmitButtonClick(ActionEvent event) {
 
     }
-
+    
+    public void initialize() {}
 }

@@ -126,5 +126,7 @@ public class AdminPageController {
 			e.printStackTrace();
 		}
     }
+    
+    public void initialize() {}
 
 }

@@ -66,5 +66,7 @@ public class EmailScreenController {
     void SendMailButtonClick(ActionEvent event) {
 
     }
+    
+    public void initialize() {}
 
 }

@@ -90,5 +90,8 @@ public class AddBooksController {
     void ResetButtonClick(ActionEvent event) {
 
     }
-
+    
+    public void initialize() {}
+    
+    }
 }

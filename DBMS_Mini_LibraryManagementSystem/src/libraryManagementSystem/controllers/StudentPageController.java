@@ -90,5 +90,7 @@ public class StudentPageController {
 		}
 
     }
+    
+    public void initialize() {}
 
 }

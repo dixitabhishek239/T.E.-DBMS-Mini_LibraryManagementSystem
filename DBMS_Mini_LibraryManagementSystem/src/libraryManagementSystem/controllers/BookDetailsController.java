@@ -52,5 +52,7 @@ public class BookDetailsController {
 			e.printStackTrace();
 		}
     }
+    
+    public void initialize() {}
 
 }

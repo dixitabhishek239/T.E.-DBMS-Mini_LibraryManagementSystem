@@ -53,5 +53,7 @@ public class IssuedBooksController {
 		}
 
     }
+    
+    public void initialize() {}
 
 }
