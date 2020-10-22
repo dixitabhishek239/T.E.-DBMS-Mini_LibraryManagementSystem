@@ -9,11 +9,35 @@ import java.sql.Statement;
 public class ConnectionManager {
 	// JDBC driver name and database URL
 	   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	   
+	   //ABHISHEK
 	   static final String DB_URL = "jdbc:mysql://localhost/LIBRARY_MANAGEMENT_SYSTEM";
 
 	   //  Database credentials
 	   static final String USER = "root";
 	   static final String PASS = "abhishek239";
+	   
+	   //BHADRA
+//	   static final String DB_URL = "jdbc:mysql://localhost/LIBRARY_MANAGEMENT_SYSTEM";
+//
+//	   //  Database credentials
+//	   static final String USER = "root";
+//	   static final String PASS = "abhishek239";
+	   
+	   //PRATIK
+//	   static final String DB_URL = "jdbc:mysql://localhost/LIBRARY_MANAGEMENT_SYSTEM";
+//
+//	   //  Database credentials
+//	   static final String USER = "root";
+//	   static final String PASS = "abhishek239";
+	   
+	   //SOHAM
+//	   static final String DB_URL = "jdbc:mysql://localhost/LIBRARY_MANAGEMENT_SYSTEM";
+//
+//	   //  Database credentials
+//	   static final String USER = "root";
+//	   static final String PASS = "abhishek239";
+	   
 	   
 	   public static void main(String[] args) {
 	   Connection conn = null;
