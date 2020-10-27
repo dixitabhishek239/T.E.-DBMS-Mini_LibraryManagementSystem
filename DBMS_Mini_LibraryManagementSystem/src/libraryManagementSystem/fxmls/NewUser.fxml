@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,7 +22,8 @@
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </padding>
          <children>
-            <Region prefHeight="36.0" prefWidth="225.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#BackButtonClick" prefHeight="26.0" prefWidth="60.0" text="Back" />
+            <Region prefHeight="36.0" prefWidth="175.0" HBox.hgrow="ALWAYS" />
             <Label prefHeight="36.0" prefWidth="150.0" text="NEW USER" textFill="WHITE" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
@@ -36,18 +39,52 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="35.0" prefWidth="600.0" />
+            <HBox prefHeight="25.0" prefWidth="600.0" />
             <HBox prefHeight="35.0" prefWidth="600.0">
                <children>
-                  <Region prefHeight="25.0" prefWidth="125.0" HBox.hgrow="ALWAYS" />
-                  <Label text="Email Id :" HBox.hgrow="ALWAYS">
+                  <Region prefHeight="200.0" prefWidth="125.0" HBox.hgrow="ALWAYS" />
+                  <Label text="User Type :" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="newUserId" prefHeight="30.0" prefWidth="235.0" HBox.hgrow="ALWAYS">
+                  <ChoiceBox fx:id="userTypeChoiceBox" prefHeight="30.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+                  <Region prefHeight="25.0" prefWidth="130.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="15.0" prefWidth="600.0" />
+            <HBox prefHeight="35.0" prefWidth="600.0">
+               <children>
+                  <Region prefHeight="200.0" prefWidth="125.0" HBox.hgrow="ALWAYS" />
+                  <Label text="Name :" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="newNameId" prefHeight="30.0" prefWidth="235.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="38.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Region prefHeight="25.0" prefWidth="130.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox prefHeight="15.0" prefWidth="600.0" />
+            <HBox prefHeight="35.0" prefWidth="600.0">
+               <children>
+                  <Region prefHeight="200.0" prefWidth="125.0" HBox.hgrow="ALWAYS" />
+                  <Label prefHeight="32.0" prefWidth="77.0" text="Email :" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="newEmailId" prefHeight="30.0" prefWidth="235.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="30.0" />
                      </HBox.margin>
                   </TextField>
                   <Region prefHeight="25.0" prefWidth="130.0" HBox.hgrow="ALWAYS" />
@@ -70,7 +107,18 @@
                   <Region prefHeight="35.0" prefWidth="130.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox prefHeight="15.0" prefWidth="600.0" />
+            <HBox prefHeight="30.0" prefWidth="600.0" />
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Region prefHeight="200.0" prefWidth="240.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#SignUpButtonClick" prefHeight="25.0" prefWidth="100.0" text="Sign Up">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Region prefHeight="200.0" prefWidth="240.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>
