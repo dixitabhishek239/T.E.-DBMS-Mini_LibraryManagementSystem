@@ -17,6 +17,28 @@ public class UserDetails {
 		this.email = email;
 		this.password = password;
 	}
+	public UserDetails(int userId, int userTypeId, String email, String password) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.userId = userId;
+		this.userTypeId = userTypeId;
+		this.email = email;
+		this.password = password;
+
+	}
+	public UserDetails() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public UserDetails(String userName, Integer userTypeId, String email, String password) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.userName = userName;
+		this.userTypeId = userTypeId;
+		this.email = email;
+		this.password = password;
+		
+	}
 	public int getUserId() {
 		return userId;
 	}

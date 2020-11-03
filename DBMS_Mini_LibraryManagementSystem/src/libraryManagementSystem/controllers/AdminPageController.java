@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 
 public class AdminPageController {
 
+//	private UserDetails userDetails;
+	private int userId;
+	private int userTypeId;
+	
     @FXML
     private Button logoutbutton;
 
@@ -48,19 +52,34 @@ public class AdminPageController {
 
     @FXML
     void IssuedBookButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+//    	FXMLLoader loader = new FXMLLoader();
+//    	Parent myNewScene;
+//		try {
+//			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
+//			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
+//	    	Scene scene = new Scene(myNewScene);
+//	    	stage.setScene(scene);
+//	    	stage.setTitle("ISSUED BOOKS");
+//	    	stage.show(); 
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
+			//user_type_Id
+			//User_Id
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/IssuedBooks.fxml"));
+			myNewScene = loader.load();
+			IssuedBooksController issuedBooksController = loader.getController();
+			issuedBooksController.getFromPreviousScreen(userId,userTypeId);
 			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ISSUED BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
     }
 
     @FXML
@@ -127,6 +146,23 @@ public class AdminPageController {
 		}
     }
     
-    public void initialize() {}
+    void getFromLoginPage(int userId, int userTypeId) {
+    	
+    	this.userId = userId;
+    	this.userTypeId = userTypeId;
+    	
+    	System.out.println("ADMIN CONTROLLER");
+    	System.out.println("USER ID : "+userId);
+    	System.out.println("USER TYPE ID : "+userTypeId);
+    	
+    }
+    
+    public void initialize() {
+    	
+    	System.out.println("ADMIN CONTROLLER INITIALIZE");
+    	System.out.println("USER ID : "+userId);
+    	System.out.println("USER TYPE ID : "+userTypeId);
+    	
+    }
 
 }

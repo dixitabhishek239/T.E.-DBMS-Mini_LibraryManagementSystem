@@ -38,12 +38,11 @@
             <Insets left="5.0" right="5.0" />
          </BorderPane.margin>
          <content>
-            <TableView prefHeight="900.0" prefWidth="1275.0">
+            <TableView fx:id="bookDetailsTable" prefHeight="900.0" prefWidth="1275.0">
               <columns>
                 <TableColumn fx:id="bookNameId" prefWidth="180.0" text="Name of Book" />
                 <TableColumn fx:id="authorNameId" prefWidth="180.0" text="Name of Author" />
                   <TableColumn fx:id="departmentId" prefWidth="180.0" text="Department" />
-                  <TableColumn fx:id="subjectId" prefWidth="180.0" text="Subject" />
                   <TableColumn fx:id="quantityId" prefWidth="180.0" text="Quantity" />
                   <TableColumn fx:id="priceId" prefWidth="180.0" text="Price" />
                   <TableColumn fx:id="commentsId" prefWidth="180.0" text="Comments" />

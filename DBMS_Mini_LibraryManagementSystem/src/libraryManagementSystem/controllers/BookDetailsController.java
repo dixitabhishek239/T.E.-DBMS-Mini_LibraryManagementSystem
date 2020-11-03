@@ -1,7 +1,10 @@
 package libraryManagementSystem.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import libraryManagementSystem.helpers.BookDetailsHelper;
+import libraryManagementSystem.wrapper.BookDetailsWrapper;
 
 public class BookDetailsController {
 
@@ -17,25 +24,25 @@ public class BookDetailsController {
     private Button backButton;
 
     @FXML
-    private TableColumn<?, ?> bookNameId;
+    private TableView<BookDetailsWrapper> bookDetailsTable;
+    
+    @FXML
+    private TableColumn<BookDetailsWrapper, String> bookNameId;
 
     @FXML
-    private TableColumn<?, ?> authorNameId;
+    private TableColumn<BookDetailsWrapper, String> authorNameId;
 
     @FXML
-    private TableColumn<?, ?> departmentId;
+    private TableColumn<BookDetailsWrapper, String> departmentId;
 
     @FXML
-    private TableColumn<?, ?> subjectId;
+    private TableColumn<BookDetailsWrapper, Integer> quantityId;
 
     @FXML
-    private TableColumn<?, ?> quantityId;
+    private TableColumn<BookDetailsWrapper, Integer> priceId;
 
     @FXML
-    private TableColumn<?, ?> priceId;
-
-    @FXML
-    private TableColumn<?, ?> commentsId;
+    private TableColumn<BookDetailsWrapper, String> commentsId;
 
     @FXML
     void BackButtonClick(ActionEvent event) {
@@ -53,6 +60,49 @@ public class BookDetailsController {
 		}
     }
     
-    public void initialize() {}
+    public void initialize() {
+    	
+    	ArrayList<BookDetailsWrapper> bookDetailsList = new BookDetailsHelper().getBookDetails();
+    	ArrayList<BookDetailsWrapper> bookDetailsWrapperList = new ArrayList<BookDetailsWrapper>();
+    	
+    	bookNameId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, String>("BookName"));
+    	authorNameId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, String>("BookAuthor"));
+    	departmentId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, String>("DepartmentDescription"));
+    	quantityId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, Integer>("BookQuantity"));
+    	priceId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, Integer>("BookPrice"));
+    	commentsId.setCellValueFactory(new PropertyValueFactory<BookDetailsWrapper, String>("BookComments"));
+    
+    	for(BookDetailsWrapper bookDetailsWrapper : bookDetailsList) {
+    		
+    		bookDetailsWrapperList.add(
+    				new BookDetailsWrapper(
+    				bookDetailsWrapper.getBookName(),
+    				bookDetailsWrapper.getBookAuthor(),
+    				bookDetailsWrapper.getDepartmentDescription(),
+    				bookDetailsWrapper.getBookQuantity(),
+    				bookDetailsWrapper.getBookPrice(),
+    				bookDetailsWrapper.getBookComments()));
+    		
+    	}
+    	ObservableList<BookDetailsWrapper> list =FXCollections.observableArrayList(bookDetailsWrapperList);
+    	bookDetailsTable.setItems(list);
+    	
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

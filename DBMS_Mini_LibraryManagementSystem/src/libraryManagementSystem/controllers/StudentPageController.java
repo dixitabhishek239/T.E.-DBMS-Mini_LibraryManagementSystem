@@ -8,8 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import libraryManagementSystem.beans.UserDetails;
 
 public class StudentPageController {
+
+	UserDetails userDetails;
+	private int userId;
+	private int userTypeId;
 
     @FXML
     private Button logoutbutton;
@@ -91,6 +96,24 @@ public class StudentPageController {
 
     }
     
-    public void initialize() {}
+    public void initialize() {
+    	
+    	System.out.println("ADMIN CONTROLLER INITIALIZE");
+    	System.out.println("USER ID : "+userId);
+    	System.out.println("USER TYPE ID : "+userTypeId);
+    	
+    }
+
+    void getFromLoginPage(int userId, int userTypeId) {
+    	
+    	this.userId = userId;
+    	this.userTypeId = userTypeId;
+    	
+    	System.out.println("ADMIN CONTROLLER");
+    	System.out.println("USER ID : "+userId);
+    	System.out.println("USER TYPE ID : "+userTypeId);
+    
+    }
+
 
 }
