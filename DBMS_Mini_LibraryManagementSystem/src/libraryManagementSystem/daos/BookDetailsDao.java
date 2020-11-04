@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import libraryManagementSystem.beans.BookDetails;
 import libraryManagementSystem.jdbc.connectivity.ConnectionManager;
 import libraryManagementSystem.wrapper.BookDetailsWrapper;
 
@@ -51,4 +52,38 @@ public class BookDetailsDao {
 		return bookDetailsList;
 	}
 	
+	public void create(BookDetails bookDetails) {
+		
+		try(Connection connection = DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			String query = "INSERT INTO BOOK_DETAILS \n" + 
+					"( BOOK_NAME, \n" + 
+					"  DEPARTMENT_ID,\n" + 
+					"  BOOK_AUTHOR,\n" + 
+					"  BOOK_QUANTITY,\n" + 
+					"  BOOK_PRICE,\n" + 
+					"  BOOK_COMMENTS )\n" + 
+					"VALUES(\n" + 
+					" '"+ bookDetails.getBookName() +"',\n" + 
+					" "+ bookDetails.getDepartmentId() +",\n" + 
+					" '"+ bookDetails.getBookAuthor() +"',\n" + 
+					" "+ bookDetails.getBookQuantity() +",\n" + 
+					" "+ bookDetails.getBookPrice() +",\n" + 
+					" '"+ bookDetails.getBookComments() +"'\n" + 
+					")\n" + 
+					"\n" + 
+					"\n" + 
+					"\n" + 
+					"\n" + 
+					"\n" + 
+					"";
+			System.out.println(query);
+			statement.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
 }

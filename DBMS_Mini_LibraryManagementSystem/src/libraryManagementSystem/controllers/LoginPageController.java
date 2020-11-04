@@ -49,8 +49,8 @@ public class LoginPageController {
     @FXML
     void LoginClick(ActionEvent event) {
     	
-    	userName = usernameId.getText();
-    	userPassword = passwordId.getText();
+    	userName = usernameId.getText().toUpperCase();
+    	userPassword = passwordId.getText().toUpperCase();
     	    		
     	if(userName.equals("") || userPassword.equals("")) {
     		System.out.println("Please enter the REQUIRED FEILDS");

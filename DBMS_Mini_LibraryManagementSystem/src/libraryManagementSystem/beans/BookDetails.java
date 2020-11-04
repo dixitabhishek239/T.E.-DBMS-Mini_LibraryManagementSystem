@@ -21,6 +21,18 @@ public class BookDetails {
 		this.bookPrice = bookPrice;
 		this.bookComments = bookComments;
 	}
+
+	public BookDetails(String bookName, int departmentId, String bookAuthor, int bookQuantity,
+			int bookPrice, String bookComments) {
+		super();
+		this.bookName = bookName;
+		this.departmentId = departmentId;
+		this.bookAuthor = bookAuthor;
+		this.bookQuantity = bookQuantity;
+		this.bookPrice = bookPrice;
+		this.bookComments = bookComments;
+	}
+
 	
 	public int getBookId() {
 		return bookId;

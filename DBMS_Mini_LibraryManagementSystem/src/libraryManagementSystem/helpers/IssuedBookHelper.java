@@ -10,5 +10,9 @@ public class IssuedBookHelper {
 	public ArrayList<IssuedBooksWrapper> getBookDetails() {
 		return new IssuedBooksDao().getBookDetails();
 	}
+
+	public ArrayList<IssuedBooksWrapper> getBookDetails(int userType) {
+		return new IssuedBooksDao().getBookDetails(userType);
+	}
 	
 }

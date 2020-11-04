@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AddBooksController">
+<BorderPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AddBooksController">
    <top>
       <HBox prefHeight="75.0" prefWidth="600.0" style="-fx-background-color: navy blue;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -107,22 +107,6 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="departmentChoiceBox" prefHeight="25.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin></ChoiceBox>
-               </children>
-               <padding>
-                  <Insets left="11.0" right="21.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label prefWidth="150.0" text="Subject:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="subjectChoiceBox" prefHeight="25.0" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></ChoiceBox>

@@ -30,18 +30,22 @@ public class StudentPageController {
 
     @FXML
     void IssuedBookClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/IssuedBooks.fxml").openStream());
+			//user_type_Id
+			//User_Id
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/IssuedBooks.fxml"));
+			myNewScene = loader.load();
+			IssuedBooksController issuedBooksController = loader.getController();
+			issuedBooksController.getFromPreviousScreen(userId,userTypeId);
 			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ISSUED BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
     }
 
@@ -64,18 +68,36 @@ public class StudentPageController {
 
     @FXML
     void SearchBookButton(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+//    	FXMLLoader loader = new FXMLLoader();
+//    	Parent myNewScene;
+//		try {
+//			myNewScene = loader.load(getClass().getResource("../fxmls/SearchBook.fxml").openStream());
+//			Stage stage = (Stage) searchBook.getScene().getWindow();
+//	    	Scene scene = new Scene(myNewScene);
+//	    	stage.setScene(scene);
+//	    	stage.setTitle("SEARCH BOOKS");
+//	    	stage.show(); 
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/SearchBook.fxml").openStream());
-			Stage stage = (Stage) searchBook.getScene().getWindow();
+			//user_type_Id
+			//User_Id
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/SearchBook.fxml"));
+			myNewScene = loader.load();
+			SearchBookController searchBookController = loader.getController();
+			searchBookController.getFromPreviousScreen(userId,userTypeId);
+			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("SEARCH BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
     }
     
 
