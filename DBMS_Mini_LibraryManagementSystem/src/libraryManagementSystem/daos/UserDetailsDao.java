@@ -20,7 +20,7 @@ public class UserDetailsDao {
 			
 			String query = "SELECT USER_ID, USER_TYPE_ID, EMAIL_ID, PASSWORD FROM USER_DETAILS\n" + 
 					"WHERE EMAIL_ID = '"+ emailId +"';";
-			
+			System.out.println(query);
 			ResultSet rs = statement.executeQuery(query);
 
 			while(rs.next()) {

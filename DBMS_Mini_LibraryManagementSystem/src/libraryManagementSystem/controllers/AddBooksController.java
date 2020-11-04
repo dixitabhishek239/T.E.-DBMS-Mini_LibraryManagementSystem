@@ -13,13 +13,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import libraryManagementSystem.beans.BookDetails;
 import libraryManagementSystem.beans.DepartmentDetails;
@@ -78,7 +81,12 @@ public class AddBooksController {
     			 commentText.getText().trim().isEmpty() ||
     			 departmentId == null
     	) {
-    		System.out.println("Please Fill the Book Details");
+    		Alert a1 = new Alert(AlertType.NONE,  
+                    "Please Fill the Book Details",ButtonType.OK); 
+
+		      // show the dialog 
+		      a1.show();
+
     	}
     	else {
     	    	

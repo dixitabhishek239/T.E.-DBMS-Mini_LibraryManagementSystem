@@ -2,6 +2,7 @@ package libraryManagementSystem.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,7 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -53,20 +58,52 @@ public class LoginPageController {
     	userPassword = passwordId.getText().toUpperCase();
     	    		
     	if(userName.equals("") || userPassword.equals("")) {
-    		System.out.println("Please enter the REQUIRED FEILDS");
+    		//System.out.println("Please enter the REQUIRED FEILDS");
+    		
+    		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+    		Alert alert = new Alert(AlertType.WARNING,
+    		        "Please enter the REQUIRED FEILDS",
+    		        ok);
+
+    		alert.setTitle("Date format warning");
+    		Optional<ButtonType> result = alert.showAndWait();
+
+    		if (result.get() == ok) {
+    		    usernameId.clear();
+    		    passwordId.clear();
+    		}
+    		
+    		
    		}
     	else {
     		
     		UserDetails userDetails = new UserDetailsHelper().getPassword(userName);
-    	    userId = userDetails.getUserId();
-    		
-    	    System.out.println("USER ID : "+userId);
-        	System.out.println("USER TYPE ID : "+userTypeId);
     	    
     		if(userDetails==null) {
-    			System.out.println("User DOESN'T EXIST.");
+    			//System.out.println("User DOESN'T EXIST.");
+    			
+        		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+        		Alert alert = new Alert(AlertType.WARNING,
+        		        "User DOESN'T EXIST.",
+        		        ok);
+
+        		alert.setTitle("Date format warning");
+        		Optional<ButtonType> result = alert.showAndWait();
+
+        		if (result.get() == ok) {
+        		    usernameId.clear();
+        		    passwordId.clear();
+        		}
+
+    			
     		}
     		else {
+    			
+        	    userId = userDetails.getUserId();
+
+        	    System.out.println("USER ID : "+userId);
+            	System.out.println("USER TYPE ID : "+userTypeId);
+            	
     			if(userDetails.getPassword().equals(userPassword)) {
 	        		if(userTypeId==userDetails.getUserTypeId() && userTypeId==1) {
 	        			
@@ -104,12 +141,40 @@ public class LoginPageController {
 	        			}
 	   	    		}
 	   	    		else {
-	   	    			System.out.println("Incorrect USER TYPE");
+	   	    			//System.out.println("Incorrect USER TYPE");
+	   	    			
+	   	        		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+	   	        		Alert alert = new Alert(AlertType.WARNING,
+	   	        		        "Incorrect USER TYPE",
+	   	        		        ok);
+
+	   	        		alert.setTitle("Date format warning");
+	   	        		Optional<ButtonType> result = alert.showAndWait();
+
+	   	        		if (result.get() == ok) {
+	   	        		    usernameId.clear();
+	   	        		    passwordId.clear();
+	   	        		}
+
+	   	    			
 	   	    		}
     	    		
 	        	}
 	    	   	else {
-	    	  		System.out.println("Incorrect Password");
+	    	  		//System.out.println("Incorrect Password");
+	    	   		
+   	        		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
+   	        		Alert alert = new Alert(AlertType.WARNING,
+   	        		        "Incorrect Password",
+   	        		        ok);
+
+   	        		alert.setTitle("Date format warning");
+   	        		Optional<ButtonType> result = alert.showAndWait();
+
+   	        		if (result.get() == ok) {
+   	        		    usernameId.clear();
+   	        		    passwordId.clear();
+   	        		}
 	    	   	}
     		}
     	}	
