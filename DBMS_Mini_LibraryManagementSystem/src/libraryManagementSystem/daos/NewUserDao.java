@@ -13,16 +13,24 @@ public class NewUserDao {
 	public void create(UserDetails userDetails) {
 		try(Connection connection = DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
 			Statement statement = connection.createStatement();
-			String query = "INSERT INTO USER_DETAILS ("
-					+ "USER_NAME,"
-					+ "USER_TYPE_ID,"
-					+ "EMAIL_ID,"
-					+ "PASSWORD)\n" + 
-					"VALUES ('"
-					+userDetails.getUserName()+"',"
-					+userDetails.getUserTypeId()+",'"
-					+userDetails.getEmail()+"','"
-					+userDetails.getPassword()+"');";
+			String query = "INSERT INTO USER_DETAILS \n" + 
+					"( \n" + 
+					"	USER_NAME,\n" + 
+					"    USER_TYPE_ID,\n" + 
+					"    EMAIL_ID,\n" + 
+					"    PASSWORD,\n" + 
+					"    CONTACT_NO,\n" + 
+					"    DEPARTMENT_ID\n" + 
+					")\n" + 
+					"VALUES\n" + 
+					"(\n" + 
+					"	'"+ userDetails.getUserName() +"',\n" + 
+					"    "+ userDetails.getUserTypeId() +",\n" + 
+					"    '"+ userDetails.getEmail() +"',\n" + 
+					"    '"+ userDetails.getPassword() +"',\n" + 
+					"    "+ userDetails.getContactNo() +",\n" + 
+					"    "+ userDetails.getDepartmentId() +"\n" + 
+					")";
 			System.out.println(query);
 			statement.executeUpdate(query);
 		} catch (SQLException e) {

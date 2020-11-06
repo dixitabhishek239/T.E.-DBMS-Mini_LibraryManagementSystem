@@ -14,4 +14,7 @@ public class BookDetailsHelper {
 	public void create(BookDetails bookDetails) {
 		new BookDetailsDao().create(bookDetails);
 	}
+	public ArrayList<BookDetailsWrapper> searchBooks(BookDetailsWrapper bookDetailsWrapper) {
+		return new BookDetailsDao().searchBooks(bookDetailsWrapper);
+	}
 }

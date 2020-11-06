@@ -18,13 +18,13 @@ public class UserDetailsDao {
 		try(Connection connection =  DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
 			Statement statement = connection.createStatement();
 			
-			String query = "SELECT USER_ID, USER_TYPE_ID, EMAIL_ID, PASSWORD FROM USER_DETAILS\n" + 
+			String query = "SELECT USER_ID, USER_TYPE_ID, EMAIL_ID, PASSWORD, CONTACT_NO FROM USER_DETAILS\n" + 
 					"WHERE EMAIL_ID = '"+ emailId +"';";
 			System.out.println(query);
 			ResultSet rs = statement.executeQuery(query);
 
 			while(rs.next()) {
-				userData = new UserDetails(rs.getInt("USER_ID"),rs.getInt("USER_TYPE_ID"),rs.getString("EMAIL_ID"),rs.getString("PASSWORD"));
+				userData = new UserDetails(rs.getInt("USER_ID"),rs.getInt("USER_TYPE_ID"),rs.getString("EMAIL_ID"),rs.getString("PASSWORD"),rs.getInt("CONTACT_NO"));
 			}
 						
 		} 

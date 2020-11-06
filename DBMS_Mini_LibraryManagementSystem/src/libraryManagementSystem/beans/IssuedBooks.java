@@ -21,6 +21,13 @@ public class IssuedBooks {
 		this.returnDate = returnDate;
 		this.fine = fine;
 	}
+	public IssuedBooks(int bookId, Integer userId) {
+		this.bookId = bookId;
+		this.userId = userId;
+	}
+	public IssuedBooks(int bookId) {
+		this.bookId = bookId;
+	}
 	public int getIssuedId() {
 		return issuedId;
 	}

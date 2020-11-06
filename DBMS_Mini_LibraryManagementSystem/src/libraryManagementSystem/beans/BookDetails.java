@@ -34,6 +34,13 @@ public class BookDetails {
 	}
 
 	
+	public BookDetails(int departmentId, String bookName, String bookAuthor) {
+		super();
+		this.bookName = bookName;
+		this.departmentId = departmentId;
+		this.bookAuthor = bookAuthor;
+	}
+
 	public int getBookId() {
 		return bookId;
 	}

@@ -68,19 +68,7 @@ public class StudentPageController {
 
     @FXML
     void SearchBookButton(ActionEvent event) {
-//    	FXMLLoader loader = new FXMLLoader();
-//    	Parent myNewScene;
-//		try {
-//			myNewScene = loader.load(getClass().getResource("../fxmls/SearchBook.fxml").openStream());
-//			Stage stage = (Stage) searchBook.getScene().getWindow();
-//	    	Scene scene = new Scene(myNewScene);
-//	    	stage.setScene(scene);
-//	    	stage.setTitle("SEARCH BOOKS");
-//	    	stage.show(); 
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
+
     	Parent myNewScene = null;
 		try {
 			//user_type_Id
@@ -103,18 +91,22 @@ public class StudentPageController {
 
     @FXML
     void SubmitButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+		Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/SubmitBooks.fxml").openStream());
-			Stage stage = (Stage) submitButton.getScene().getWindow();
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/SubmitBooks.fxml"));
+			myNewScene = loader.load();
+			SubmitPageController submitPageController = loader.getController();
+			submitPageController.getFromPreviousScreen(userId,userTypeId);
+			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("SUBMIT BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 
     }
     

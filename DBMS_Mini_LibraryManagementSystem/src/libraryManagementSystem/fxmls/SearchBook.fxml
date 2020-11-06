@@ -94,12 +94,11 @@
                <children>
                   <ScrollPane>
                      <content>
-                        <TableView prefHeight="730.0" prefWidth="1275.0">
+                        <TableView fx:id="searchedBookTable" prefHeight="730.0" prefWidth="1275.0">
                           <columns>
                             <TableColumn fx:id="bookNameId" prefWidth="150.0" text="Book Name" />
                             <TableColumn fx:id="authorNameId" prefWidth="150.0" text="Author Name" />
-                              <TableColumn fx:id="subjectId" prefWidth="150.0" text="Subject" />
-                              <TableColumn fx:id="departmentId" prefWidth="150.0" text="Department" />
+                              <TableColumn fx:id="departmentCol" prefWidth="150.0" text="Department" />
                               <TableColumn fx:id="selectChoiceBoxId" prefWidth="150.0" text="Select" />
                           </columns>
                         </TableView>

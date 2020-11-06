@@ -92,18 +92,22 @@ public class AdminPageController {
 
     @FXML
     void SendMailButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/EmailScreen.fxml").openStream());
-			Stage stage = (Stage) sendMailButton.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/EmailScreen.fxml"));
+			myNewScene = loader.load();
+			EmailScreenController emailScreenController = loader.getController();
+			emailScreenController.getFromPreviousScreen(userId,userTypeId);
+			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("EMAIL");
+	    	stage.setTitle("ADMIN PAGE");
 	    	stage.show(); 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
     }
 
     @FXML

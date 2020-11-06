@@ -3,9 +3,18 @@ package libraryManagementSystem.wrapper;
 import java.util.Date;
 
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
 
 public class IssuedBooksWrapper {
 
+	int bookId;
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
 	int issuedId;
 	String userName;
 	String departmentDescription;
@@ -16,8 +25,37 @@ public class IssuedBooksWrapper {
 	Integer contactNo;
 	boolean emailSent;
 	CheckBox emailSentCheckBox;
+	Integer fine;
+	RadioButton selectedBox;
 	
+	public IssuedBooksWrapper(int bookId, String userName, String departmentDescription, String bookName, Date issuedDate,
+			Date returnDate, int fine) {
+		// TODO Auto-generated constructor stub
+		this.bookId = bookId;
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.fine = fine;
+	}
 	
+	public RadioButton getSelectedBox() {
+		return selectedBox;
+	}
+
+	public void setSelectedBox(RadioButton selectedBox) {
+		this.selectedBox = selectedBox;
+	}
+
+	public Integer getFine() {
+		return fine;
+	}
+
+	public void setFine(Integer fine) {
+		this.fine = fine;
+	}
+
 	public IssuedBooksWrapper() {
 		super();
 	}
@@ -61,6 +99,43 @@ public class IssuedBooksWrapper {
 		this.contactNo = contactNo;
 	
 	}
+
+	public IssuedBooksWrapper(String userName, String departmentDescription, String bookName, Date issuedDate, Date returnDate,
+			int fine) {
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.fine = fine;
+	}
+
+
+
+	public IssuedBooksWrapper(String userName, String departmentDescription, String bookName, Date issuedDate,
+			Date returnDate, CheckBox emailSentCheckBox, Integer fine) {
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.emailSentCheckBox = emailSentCheckBox;
+		this.fine = fine;
+	}
+
+	public IssuedBooksWrapper(String userName, String departmentDescription, String bookName, Date issuedDate,
+			Date returnDate, RadioButton selectedBox, Integer fine) {
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.selectedBox = selectedBox;
+		this.fine = fine;
+
+	}
+
+	
 
 	public CheckBox getEmailSentCheckBox() {
 		return emailSentCheckBox;
