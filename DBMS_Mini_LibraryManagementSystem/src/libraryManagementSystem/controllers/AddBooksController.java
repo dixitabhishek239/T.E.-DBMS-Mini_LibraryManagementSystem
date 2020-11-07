@@ -31,6 +31,9 @@ import libraryManagementSystem.helpers.DepartmentDetailsHelper;
 
 public class AddBooksController {
 
+	private Integer userId;
+	private int userTypeId;
+	
 	private String bookName;
 	private Integer booksQuantity;
 	private String bookAuthor;
@@ -90,18 +93,11 @@ public class AddBooksController {
     	}
     	else {
     	    	
-    		System.out.println("Else Part Worked");
     		bookName = bookNameText.getText().toUpperCase();
         	booksQuantity = quantitySpinner.getValue();
         	bookAuthor = authorText.getText().toUpperCase();
         	bookPrice = Integer.parseInt(priceText.getText().toString());
         	comments = commentText.getText().toUpperCase();
-        	
-        	System.out.println("BOOK NAME:"+bookName);
-        	System.out.println("BOOK QUANTITY:"+booksQuantity);
-        	System.out.println("BOOK AUTHOR:"+bookAuthor);
-        	System.out.println("BOOK PRICE:"+bookPrice);
-        	System.out.println("BOOK COMMENT:"+comments);
 
         	BookDetails bookDetails = new BookDetails(bookName,departmentId,bookAuthor,booksQuantity,bookPrice,comments);
         	new BookDetailsHelper().create(bookDetails);
@@ -114,7 +110,7 @@ public class AddBooksController {
 				Stage stage = (Stage) backButton.getScene().getWindow();
 		    	Scene scene = new Scene(myNewScene);
 		    	stage.setScene(scene);
-		    	stage.setTitle("ADD BOOKS");
+		    	stage.setTitle("ADMIN PAGE");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -124,19 +120,20 @@ public class AddBooksController {
 
     @FXML
     void BackButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/AdminPage.fxml").openStream());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/AdminPage.fxml"));
+			myNewScene = loader.load();
+			AdminPageController adminPageController = loader.getController();
+			adminPageController.getFromLoginPage(userId,userTypeId);
 			Stage stage = (Stage) backButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ADD BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
 		}
-
     }
 
     @FXML
@@ -178,5 +175,10 @@ public class AddBooksController {
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.ListSpinnerValueFactory<Integer>(quantityList);
 		quantitySpinner.setValueFactory(valueFactory);
     }
+
+	public void getFromPreviousScreen(int userId, int userTypeId) {
+		this.userId = userId;
+    	this.userTypeId = userTypeId;		
+	}
     
 }

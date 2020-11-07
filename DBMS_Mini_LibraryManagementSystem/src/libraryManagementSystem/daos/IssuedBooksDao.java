@@ -198,7 +198,7 @@ public class IssuedBooksDao {
 					"WHERE IB.USER_ID = "+ userId +"\n" + 
 					"";
 			
-			System.out.println(query);
+//			System.out.println(query);
 			ResultSet rs = statement.executeQuery(query);
 			while(rs.next()) {
 				submitDetailList.add(
@@ -304,4 +304,69 @@ public class IssuedBooksDao {
 		return bookIssuedCount;
 	}
 
+	public ArrayList<IssuedBooksWrapper> getEmailTableData(){
+		
+		ArrayList<IssuedBooksWrapper> getEmailTableList = new ArrayList<IssuedBooksWrapper>();
+		
+		try(Connection connection = DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			String query = "SELECT\n" + 
+					"IB.BOOK_ID,\n" + 
+					"UD.USER_ID,\n" + 
+					"UD.USER_NAME,\n" + 
+					"DD.DEPARTMENT_DESCRIPTION,\n" + 
+					"BD.BOOK_NAME,\n" + 
+					"UD.EMAIL_ID,\n" + 
+					"IB.ISSUED_DATE,\n" + 
+					"IB.RETURN_DATE,\n" + 
+					"UD.CONTACT_NO,\n" + 
+					"IB.FINE\n" + 
+					"FROM ISSUED_BOOKS AS IB\n" + 
+					"JOIN BOOK_DETAILS AS BD\n" + 
+					"ON IB.BOOK_ID = BD.BOOK_ID\n" + 
+					"JOIN DEPARTMENT_DETAILS AS DD\n" + 
+					"ON BD.DEPARTMENT_ID = DD.DEPARTMENT_ID\n" + 
+					"JOIN USER_DETAILS AS UD\n" + 
+					"ON IB.USER_ID = UD.USER_ID";
+			//System.out.println(query);
+			ResultSet rs = statement.executeQuery(query);
+			while(rs.next()) {
+				getEmailTableList.add(
+						new IssuedBooksWrapper(
+								rs.getInt("BOOK_ID"),
+								rs.getInt("USER_ID"),
+								rs.getString("USER_NAME"), 
+								rs.getString("DEPARTMENT_DESCRIPTION"), 
+								rs.getString("BOOK_NAME"), 
+								rs.getString("EMAIL_ID"), 
+								rs.getDate("ISSUED_DATE"), 
+								rs.getDate("RETURN_DATE"), 
+								rs.getInt("CONTACT_NO"),
+								rs.getInt("FINE")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		return getEmailTableList;
+		
+	}
+
+	public void updateEmailSent(int userId, int bookId) {
+		try(Connection connection = DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			String query = "UPDATE ISSUED_BOOKS \n" + 
+					"SET EMAIL_SENT = 1\n" + 
+					"WHERE USER_ID = "+ userId +" AND BOOK_ID = "+ bookId +"";
+//			System.out.println(query);
+			statement.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 }

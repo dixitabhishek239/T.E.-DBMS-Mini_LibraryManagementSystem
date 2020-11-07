@@ -34,4 +34,11 @@ public class IssuedBookHelper {
 	public int getBookIssuedCount(Integer userId) {
 		return new IssuedBooksDao().getBookIssuedCount(userId);
 	}
+	public ArrayList<IssuedBooksWrapper> getEmailTableData(){
+		return  new IssuedBooksDao().getEmailTableData();
+	}
+
+	public void updateEmailSent(int userId, int bookId) {
+		new IssuedBooksDao().updateEmailSent(userId,bookId);
+	}
 }

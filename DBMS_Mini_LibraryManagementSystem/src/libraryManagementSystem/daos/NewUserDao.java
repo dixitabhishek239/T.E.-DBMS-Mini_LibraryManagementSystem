@@ -31,7 +31,7 @@ public class NewUserDao {
 					"    "+ userDetails.getContactNo() +",\n" + 
 					"    "+ userDetails.getDepartmentId() +"\n" + 
 					")";
-			System.out.println(query);
+//			System.out.println(query);
 			statement.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

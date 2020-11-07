@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +23,6 @@ public class IssuedBooksController {
 	
 	ArrayList<IssuedBooksWrapper> issuedBooksList = new IssuedBookHelper().getBookDetails();
 	ArrayList<IssuedBooksWrapper> issuedBooksWrapperList = new ArrayList<IssuedBooksWrapper>();
-
 
 	private Integer userId;
 	private int userTypeId;
@@ -57,7 +55,7 @@ public class IssuedBooksController {
     private TableColumn<IssuedBooksWrapper, Integer> contactNoId;
 
     @FXML
-    private TableColumn<IssuedBooksWrapper, CheckBox> emailSentId;
+    private TableColumn<IssuedBooksWrapper, String> emailSentId;
     
     @FXML
     void BackButtonClick(ActionEvent event) {
@@ -108,9 +106,6 @@ public class IssuedBooksController {
 		this.userId = userId;
     	this.userTypeId = userTypeId;
     	
-    	System.out.println("ISSUED BOOKS METHOD");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);	
     	if(userTypeId==1) {
         	emailSentId.setVisible(true);
         	issuedBooksList = new IssuedBookHelper().getBookDetails();
@@ -123,15 +118,14 @@ public class IssuedBooksController {
         	issuedDateId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Date>("IssuedDate"));
         	returnDateId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Date>("ReturnDate"));
         	contactNoId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Integer>("ContactNo"));
-        	emailSentId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, CheckBox>("EmailSent"));
-        	
-        	emailSentId.setVisible(false);
-        	
-        	
+        	emailSentId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, String>("EmailSentString"));
         	
     		for(IssuedBooksWrapper issuedBooksWrapper : issuedBooksList) {
         		
-        		CheckBox emailSent = new CheckBox();
+        		String emailSent = "No";
+        		if(issuedBooksWrapper.isEmailSent()) {
+            		emailSent = "Yes";
+            	}
         		
         		issuedBooksWrapperList.add(
         				new IssuedBooksWrapper(
@@ -160,16 +154,17 @@ public class IssuedBooksController {
         	issuedDateId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Date>("IssuedDate"));
         	returnDateId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Date>("ReturnDate"));
         	contactNoId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, Integer>("ContactNo"));
-        	emailSentId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, CheckBox>("EmailSent"));
+        	emailSentId.setCellValueFactory(new PropertyValueFactory<IssuedBooksWrapper, String>("EmailSentString"));
         	
         	emailSentId.setVisible(false);
-        	
-        	
-        	
+        	  	
     		for(IssuedBooksWrapper issuedBooksWrapper : issuedBooksList) {
         		
-        		CheckBox emailSent = new CheckBox();
-        		
+        		String emailSent = "No";
+        		if(issuedBooksWrapper.isEmailSent()) {
+            		emailSent = "Yes";
+            	}
+
         		issuedBooksWrapperList.add(
         				new IssuedBooksWrapper(
         				issuedBooksWrapper.getUserName(),
@@ -186,8 +181,7 @@ public class IssuedBooksController {
         	issuedBookTable.setItems(list);
 
     	}
-    	
-    	
+    
 	}
 	
 }

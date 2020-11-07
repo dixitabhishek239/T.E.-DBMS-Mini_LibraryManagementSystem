@@ -16,6 +16,14 @@ public class IssuedBooksWrapper {
 		this.bookId = bookId;
 	}
 	int issuedId;
+	int userId;
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	String userName;
 	String departmentDescription;
 	String bookName;
@@ -24,9 +32,32 @@ public class IssuedBooksWrapper {
 	Date returnDate;
 	Integer contactNo;
 	boolean emailSent;
+	String emailSentString;
+	public String getEmailSentString() {
+		return emailSentString;
+	}
+
+	public void setEmailSentString(String emailSentString) {
+		this.emailSentString = emailSentString;
+	}
 	CheckBox emailSentCheckBox;
 	Integer fine;
 	RadioButton selectedBox;
+	
+	public IssuedBooksWrapper(int bookId, int userId, String userName, String departmentDescription, String bookName, String emailId, Date issuedDate,
+			Date returnDate, int contactNo, int fine) {
+		this.bookId = bookId;
+		this.userId = userId;
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.emailId = emailId;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.contactNo = contactNo;
+		this.fine = fine;
+	}
+
 	
 	public IssuedBooksWrapper(int bookId, String userName, String departmentDescription, String bookName, Date issuedDate,
 			Date returnDate, int fine) {
@@ -75,7 +106,7 @@ public class IssuedBooksWrapper {
 	}
 	
 	public IssuedBooksWrapper(String userName, String departmentDescription, String bookName,
-			String emailId, Date issuedDate, Date returnDate, Integer contactNo, CheckBox emailSentCheckBox) {
+			String emailId, Date issuedDate, Date returnDate, Integer contactNo, String emailSentString) {
 		super();
 		this.userName = userName;
 		this.departmentDescription = departmentDescription;
@@ -84,7 +115,7 @@ public class IssuedBooksWrapper {
 		this.issuedDate = issuedDate;
 		this.returnDate = returnDate;
 		this.contactNo = contactNo;
-		this.emailSentCheckBox = emailSentCheckBox;
+		this.emailSentString = emailSentString;
 	}
 
 	public IssuedBooksWrapper(String userName, String departmentDescription, String bookName, String emailId,
@@ -136,6 +167,20 @@ public class IssuedBooksWrapper {
 	}
 
 	
+
+
+	public IssuedBooksWrapper(RadioButton selectedBox, String userName, String departmentDescription,
+			String bookName, String emailId, Date issuedDate, Date returnDate, Integer contactNo, Integer fine) {
+		this.selectedBox = selectedBox;
+		this.userName = userName;
+		this.departmentDescription = departmentDescription;
+		this.bookName = bookName;
+		this.emailId = emailId;
+		this.issuedDate = issuedDate;
+		this.returnDate = returnDate;
+		this.contactNo = contactNo;
+		this.fine = fine;
+	}
 
 	public CheckBox getEmailSentCheckBox() {
 		return emailSentCheckBox;

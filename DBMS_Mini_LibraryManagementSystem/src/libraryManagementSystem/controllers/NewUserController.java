@@ -87,7 +87,6 @@ public class NewUserController {
     				departmentId == null ||
     				userTypeId == null
     				) {
-    			//System.out.println("Please fill the fields");
     			ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
         		Alert alert = new Alert(AlertType.WARNING,
         		        "Please fill the fields",

@@ -37,7 +37,6 @@ import libraryManagementSystem.helpers.BookDetailsHelper;
 import libraryManagementSystem.helpers.DepartmentDetailsHelper;
 import libraryManagementSystem.helpers.IssuedBookHelper;
 import libraryManagementSystem.wrapper.BookDetailsWrapper;
-import libraryManagementSystem.wrapper.IssuedBooksWrapper;
 
 public class SearchBookController {
 
@@ -124,13 +123,7 @@ public class SearchBookController {
     }
 
     @FXML
-    void IssueButtonClick(ActionEvent event) throws SQLException, ParseException {
-    	
-    	
-    	System.out.println("SELECTED BOOK NAME : "+bookDetailsWrapper.getBookName());
-    	    	
-    	// Count access - select count from issued book where userID = 1
-    	
+    void IssueButtonClick(ActionEvent event) throws SQLException, ParseException {    	    	    	
     	
     	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     	Calendar cal = Calendar.getInstance();
@@ -148,12 +141,9 @@ public class SearchBookController {
     	for(IssuedBooks issuedBooks : issuedBookIdsList) {
     		issuedBookIds.add(issuedBooks.getBookId());
     	}
-    	
-    	System.out.println("CONDITION : "+issuedBookIds.contains(bookDetailsWrapper.getBookId()));
-    	
+    	    	
     	int bookIssuedCount = new IssuedBookHelper().getBookIssuedCount(userId);
     	if(bookIssuedCount>=2) {
-    		System.out.println("You can't issue more than two books.");
     		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
     		Alert alert = new Alert(AlertType.INFORMATION,
     		        "You can't issue more than two books.",
@@ -165,7 +155,6 @@ public class SearchBookController {
     	}
     	else {
 	    	if(issuedBookIds.contains(bookDetailsWrapper.getBookId())) {
-	    		System.out.println("You can't Issued Same book twice.");
 	    		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
 	    		Alert alert = new Alert(AlertType.INFORMATION,
 	    		        "You can't issue same book twice.",
@@ -177,7 +166,6 @@ public class SearchBookController {
 	    	}
 	    	else {
 		       	if(bookDetailsWrapper.getBookQuantity()==0) {
-		    		System.out.println("Out of Stock");
 		    		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
 		    		Alert alert = new Alert(AlertType.INFORMATION,
 		    		        "Out of Stock",
@@ -192,8 +180,7 @@ public class SearchBookController {
 		    	 
 		    	Parent myNewScene = null;
 				try {
-					//user_type_Id
-					//User_Id
+					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/IssuedBooks.fxml"));
 					myNewScene = loader.load();
 					IssuedBooksController issuedBooksController = loader.getController();
@@ -201,7 +188,7 @@ public class SearchBookController {
 					Stage stage = (Stage) issueButton.getScene().getWindow();
 			    	Scene scene = new Scene(myNewScene);
 			    	stage.setScene(scene);
-				    	stage.setTitle("ADMIN PAGE");
+				    	stage.setTitle("ISSUED BOOKS");
 				    	stage.show(); 
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -239,7 +226,6 @@ public class SearchBookController {
     		EventHandler<ActionEvent> event1 = new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					System.out.println("NAME : "+book.getBookName());
 					bookDetailsWrapper = book;
 				} 
     		};
@@ -253,8 +239,6 @@ public class SearchBookController {
     		selectedBox.setOnAction(event1);
     		    		
     	}
-    	
-    
     	
     	ObservableList<BookDetailsWrapper> list = FXCollections.observableArrayList(bookDetailsWrapperList);
     	searchedBookTable.setItems(list);
@@ -278,18 +262,11 @@ public class SearchBookController {
     }
 
 	public void getFromPreviousScreen(int userId, int userTypeId) {
-	
 		this.userId = userId;
     	this.userTypeId = userTypeId;
-    	
     	if(userTypeId==1) {
 			issueButton.setDisable(true);
 		}
-    	
-    	System.out.println("ISSUED BOOKS METHOD");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);	
-		
 	}
     
 }

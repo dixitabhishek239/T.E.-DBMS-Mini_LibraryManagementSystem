@@ -32,8 +32,7 @@ public class StudentPageController {
     void IssuedBookClick(ActionEvent event) {
     	Parent myNewScene = null;
 		try {
-			//user_type_Id
-			//User_Id
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/IssuedBooks.fxml"));
 			myNewScene = loader.load();
 			IssuedBooksController issuedBooksController = loader.getController();
@@ -41,7 +40,7 @@ public class StudentPageController {
 			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-		    	stage.setTitle("ADMIN PAGE");
+		    	stage.setTitle("ISSUED BOOKS");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -71,8 +70,7 @@ public class StudentPageController {
 
     	Parent myNewScene = null;
 		try {
-			//user_type_Id
-			//User_Id
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/SearchBook.fxml"));
 			myNewScene = loader.load();
 			SearchBookController searchBookController = loader.getController();
@@ -80,7 +78,7 @@ public class StudentPageController {
 			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-		    	stage.setTitle("ADMIN PAGE");
+		    	stage.setTitle("SEARCH BOOK");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -101,20 +99,15 @@ public class StudentPageController {
 			Stage stage = (Stage) issuedBook.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-		    	stage.setTitle("ADMIN PAGE");
+		    	stage.setTitle("SUBMIT BOOK");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-
     }
     
     public void initialize() {
-    	
-    	System.out.println("ADMIN CONTROLLER INITIALIZE");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);
     	
     }
 
@@ -122,11 +115,7 @@ public class StudentPageController {
     	
     	this.userId = userId;
     	this.userTypeId = userTypeId;
-    	
-    	System.out.println("ADMIN CONTROLLER");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);
-    
+    	    
     }
 
 

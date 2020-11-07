@@ -34,27 +34,55 @@ public class AdminPageController {
     private Button searchBooksButton;
 
     @FXML
-    void AddBookButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+    private Button showUsersButton;
+    
+    @FXML
+    void ShowUsersButtonClick(ActionEvent event) {
+
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/AddBooks.fxml").openStream());
-			Stage stage = (Stage) addBookButton.getScene().getWindow();
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/UserDetails.fxml"));
+			myNewScene = loader.load();
+			UserDetailsController userDetails = loader.getController();
+			userDetails.getFromPreviousScreen(userId, userTypeId);
+			Stage stage = (Stage) showUsersButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ADD BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		    	stage.setTitle("USER DETAILS");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+    	
+    }
+    
+    @FXML
+    void AddBookButtonClick(ActionEvent event) {
+    	Parent myNewScene = null;
+		try {
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/AddBooks.fxml"));
+			myNewScene = loader.load();
+			AddBooksController addBooksController = loader.getController();
+			addBooksController.getFromPreviousScreen(userId, userTypeId);
+			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
+	    	Scene scene = new Scene(myNewScene);
+	    	stage.setScene(scene);
+		    	stage.setTitle("ADD BOOKS");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
     }
 
     @FXML
     void IssuedBookButtonClick(ActionEvent event) {
     	Parent myNewScene = null;
 		try {
-			//user_type_Id
-			//User_Id
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/IssuedBooks.fxml"));
 			myNewScene = loader.load();
 			IssuedBooksController issuedBooksController = loader.getController();
@@ -62,7 +90,7 @@ public class AdminPageController {
 			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-		    	stage.setTitle("ADMIN PAGE");
+		    	stage.setTitle("ISSUED BOOKS");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -74,8 +102,7 @@ public class AdminPageController {
 		
     	Parent myNewScene = null;
 		try {
-			//user_type_Id
-			//User_Id
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/SearchBook.fxml"));
 			myNewScene = loader.load();
 			SearchBookController searchBookController = loader.getController();
@@ -83,7 +110,7 @@ public class AdminPageController {
 			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-		    	stage.setTitle("ADMIN PAGE");
+		    	stage.setTitle("SEARCH BOOK");
 		    	stage.show(); 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -102,7 +129,7 @@ public class AdminPageController {
 			Stage stage = (Stage) issuedBookButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ADMIN PAGE");
+	    	stage.setTitle("EMAIL SCREEN");
 	    	stage.show(); 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -112,18 +139,21 @@ public class AdminPageController {
 
     @FXML
     void TotalBooksButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
-		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/BookDetails.fxml").openStream());
-			Stage stage = (Stage) totalBooksButton.getScene().getWindow();
-	    	Scene scene = new Scene(myNewScene);
-	    	stage.setScene(scene);
-	    	stage.setTitle("BOOK DETAILS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	 	Parent myNewScene = null;
+			try {
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/BookDetails.fxml"));
+				myNewScene = loader.load();
+				BookDetailsController bookDetailsController = loader.getController();
+				bookDetailsController.getFromPreviousScreen(userId,userTypeId);
+				Stage stage = (Stage) issuedBookButton.getScene().getWindow();
+		    	Scene scene = new Scene(myNewScene);
+		    	stage.setScene(scene);
+			    	stage.setTitle("BOOK DETAILS");
+			    	stage.show(); 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
     }
 
     @FXML
@@ -146,18 +176,10 @@ public class AdminPageController {
     	
     	this.userId = userId;
     	this.userTypeId = userTypeId;
-    	
-    	System.out.println("ADMIN CONTROLLER");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);
-    	
+    	    	
     }
     
     public void initialize() {
-    	
-    	System.out.println("ADMIN CONTROLLER INITIALIZE");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);
     	
     }
 

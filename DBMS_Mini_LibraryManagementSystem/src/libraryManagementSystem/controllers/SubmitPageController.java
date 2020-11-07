@@ -101,10 +101,6 @@ public class SubmitPageController {
 		this.userId = userId;
     	this.userTypeId = userTypeId;
     	
-    	System.out.println("ISSUED BOOKS METHOD");
-    	System.out.println("USER ID : "+userId);
-    	System.out.println("USER TYPE ID : "+userTypeId);	
-    	
     	ArrayList<IssuedBooksWrapper> submitDetailsList = new IssuedBookHelper().getSubmitDetailsData(userId);
     	ArrayList<IssuedBooksWrapper> submitDetailsWrapperList = new ArrayList<IssuedBooksWrapper>();
 

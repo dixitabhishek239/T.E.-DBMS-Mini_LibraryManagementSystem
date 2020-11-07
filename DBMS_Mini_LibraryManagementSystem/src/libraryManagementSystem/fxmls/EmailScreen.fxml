@@ -35,17 +35,17 @@
    <center>
       <ScrollPane BorderPane.alignment="CENTER">
          <content>
-            <TableView prefHeight="900.0" prefWidth="1275.0">
+            <TableView fx:id="emailTableId" prefHeight="900.0" prefWidth="1275.0">
               <columns>
-                <TableColumn fx:id="studentNameId" prefWidth="200.0" text="Name Of Student" />
-                <TableColumn fx:id="departmentId" prefWidth="200.0" text="Department" />
-                  <TableColumn fx:id="yearId" prefWidth="200.0" text="Year" />
-                  <TableColumn fx:id="bookNameId" prefWidth="200.0" text="Name Of Book" />
-                  <TableColumn fx:id="emailId" prefWidth="200.0" text="Email " />
-                  <TableColumn fx:id="issuedDateId" prefWidth="200.0" text="Issued Date" />
-                  <TableColumn fx:id="returnDateId" prefWidth="200.0" text="Return Date" />
-                  <TableColumn fx:id="contactNumberId" prefWidth="200.0" text="Contact No." />
-                  <TableColumn fx:id="fineId" prefWidth="200.0" text="Fine" />
+                  <TableColumn fx:id="selectId" prefWidth="150.0" text="Select" />
+                <TableColumn fx:id="studentNameId" prefWidth="150.0" text="Name Of Student" />
+                <TableColumn fx:id="departmentId" prefWidth="150.0" text="Department" />
+                  <TableColumn fx:id="bookNameId" prefWidth="150.0" text="Name Of Book" />
+                  <TableColumn fx:id="emailId" prefWidth="150.0" text="Email " />
+                  <TableColumn fx:id="issuedDateId" prefWidth="150.0" text="Issued Date" />
+                  <TableColumn fx:id="returnDateId" prefWidth="150.0" text="Return Date" />
+                  <TableColumn fx:id="contactNumberId" prefWidth="150.0" text="Contact No." />
+                  <TableColumn fx:id="fineId" prefWidth="150.0" text="Fine" />
               </columns>
             </TableView>
          </content>

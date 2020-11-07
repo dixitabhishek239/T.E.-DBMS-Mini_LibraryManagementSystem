@@ -20,6 +20,9 @@ import libraryManagementSystem.wrapper.BookDetailsWrapper;
 
 public class BookDetailsController {
 
+	private Integer userId;
+	private int userTypeId;
+	
     @FXML
     private Button backButton;
 
@@ -46,19 +49,21 @@ public class BookDetailsController {
 
     @FXML
     void BackButtonClick(ActionEvent event) {
-    	FXMLLoader loader = new FXMLLoader();
-    	Parent myNewScene;
+    	Parent myNewScene = null;
 		try {
-			myNewScene = loader.load(getClass().getResource("../fxmls/AdminPage.fxml").openStream());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/AdminPage.fxml"));
+			myNewScene = loader.load();
+			AdminPageController adminPageController = loader.getController();
+			adminPageController.getFromLoginPage(userId,userTypeId);
 			Stage stage = (Stage) backButton.getScene().getWindow();
 	    	Scene scene = new Scene(myNewScene);
 	    	stage.setScene(scene);
-	    	stage.setTitle("ADD BOOKS");
-	    	stage.show(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    }
+		    	stage.setTitle("ADMIN PAGE");
+		    	stage.show(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+		}   
+	}
     
     public void initialize() {
     	
@@ -88,7 +93,10 @@ public class BookDetailsController {
     	bookDetailsTable.setItems(list);
     	
     }
-
+	public void getFromPreviousScreen(int userId, int userTypeId) {
+		this.userId = userId;
+    	this.userTypeId = userTypeId;	
+	}
 }
 
 

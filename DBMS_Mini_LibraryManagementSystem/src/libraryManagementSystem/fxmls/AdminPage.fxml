@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AdminPageController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManagementSystem.controllers.AdminPageController">
    <top>
       <HBox prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: navy blue;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -61,6 +61,8 @@
                <children>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                   <Button fx:id="searchBooksButton" mnemonicParsing="false" onAction="#SearchBooksButtonClick" prefHeight="25.0" prefWidth="200.0" text="Search Books" />
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="showUsersButton" mnemonicParsing="false" onAction="#ShowUsersButtonClick" prefHeight="25.0" prefWidth="200.0" text="Show Users" />
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>

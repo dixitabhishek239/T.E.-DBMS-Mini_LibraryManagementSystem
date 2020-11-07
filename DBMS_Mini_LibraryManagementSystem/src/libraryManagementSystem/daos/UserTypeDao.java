@@ -11,13 +11,6 @@ import libraryManagementSystem.beans.UserType;
 import libraryManagementSystem.jdbc.connectivity.ConnectionManager;
 
 public class UserTypeDao{
-
-//	   //ABHISHEK
-//	static final String DB_URL = "jdbc:mysql://localhost/LIBRARY_MANAGEMENT_SYSTEM";
-//
-//	//  Database credentials
-//	static final String USER = "root";
-//	static final String PASS = "abhishek239";
 	
 	public ArrayList<UserType> getUserTypeList(){
 				

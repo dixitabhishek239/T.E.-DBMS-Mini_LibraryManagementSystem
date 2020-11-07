@@ -58,7 +58,6 @@ public class LoginPageController {
     	userPassword = passwordId.getText().toUpperCase();
     	    		
     	if(userName.equals("") || userPassword.equals("")) {
-    		//System.out.println("Please enter the REQUIRED FEILDS");
     		
     		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
     		Alert alert = new Alert(AlertType.WARNING,
@@ -101,16 +100,11 @@ public class LoginPageController {
     			
         	    userId = userDetails.getUserId();
 
-        	    System.out.println("USER ID : "+userId);
-            	System.out.println("USER TYPE ID : "+userTypeId);
-            	
-    			if(userDetails.getPassword().equals(userPassword)) {
+       			if(userDetails.getPassword().equals(userPassword)) {
 	        		if(userTypeId==userDetails.getUserTypeId() && userTypeId==1) {
 	        			
 	        	    	Parent myNewScene = null;
 	        			try {
-	        				//user_type_Id
-	        				//User_Id
 	        				FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxmls/AdminPage.fxml"));
 	    	    			myNewScene = loader.load();
 	    	    			AdminPageController adminPageController = loader.getController();
@@ -141,7 +135,6 @@ public class LoginPageController {
 	        			}
 	   	    		}
 	   	    		else {
-	   	    			//System.out.println("Incorrect USER TYPE");
 	   	    			
 	   	        		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
 	   	        		Alert alert = new Alert(AlertType.WARNING,
@@ -155,14 +148,10 @@ public class LoginPageController {
 	   	        		    usernameId.clear();
 	   	        		    passwordId.clear();
 	   	        		}
-
-	   	    			
 	   	    		}
     	    		
 	        	}
-	    	   	else {
-	    	  		//System.out.println("Incorrect Password");
-	    	   		
+	    	   	else {	    	   		
    	        		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
    	        		Alert alert = new Alert(AlertType.WARNING,
    	        		        "Incorrect Password",
