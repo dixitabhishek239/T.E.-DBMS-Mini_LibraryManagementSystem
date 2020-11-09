@@ -145,9 +145,9 @@ public class IssuedBooksDao {
 		        insertIssueBook = connection.prepareStatement(insertIssueBookQuery);
 		        updateBookDetails = connection.prepareStatement(updateBookDetailsQuery);
 		        
-		        	System.out.println(insertIssueBookQuery);
+//		        	System.out.println(insertIssueBookQuery);
 		            insertIssueBook.executeUpdate();
-		            System.out.println(updateBookDetailsQuery);
+//		            System.out.println(updateBookDetailsQuery);
 		            updateBookDetails.executeUpdate();
 
 		            connection.commit();
@@ -156,7 +156,7 @@ public class IssuedBooksDao {
 		        //JDBCTutorialUtilities.printSQLException(e);
 		        if (connection != null) {
 		            try {
-		                System.err.print("Transaction is being rolled back");
+//		                System.err.print("Transaction is being rolled back");
 		                connection.rollback();
 		            } catch(SQLException excep) {
 		                //JDBCTutorialUtilities.printSQLException(excep);
@@ -238,9 +238,9 @@ public class IssuedBooksDao {
 		        deleteIssuedBook = connection.prepareStatement(deleteIssueBookQuery);
 		        updateBookDetails = connection.prepareStatement(updateBookDetailsQuery);
 		        
-		        	System.out.println(deleteIssueBookQuery);
+//		        	System.out.println(deleteIssueBookQuery);
 		            deleteIssuedBook.executeUpdate();
-		            System.out.println(updateBookDetailsQuery);
+//		            System.out.println(updateBookDetailsQuery);
 		            updateBookDetails.executeUpdate();
 
 		            connection.commit();
@@ -296,7 +296,7 @@ public class IssuedBooksDao {
 			while(rs.next()) {
 				bookIssuedCount = rs.getInt("COUNT(BOOK_ID)");
 			}
-			System.out.println("COUNT : "+bookIssuedCount);
+//			System.out.println("COUNT : "+bookIssuedCount);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
