@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import libraryManagementSystem.beans.TestTable;
 import libraryManagementSystem.beans.UserDetails;
 import libraryManagementSystem.jdbc.connectivity.ConnectionManager;
 import libraryManagementSystem.wrapper.UserDetailsWrapper;
@@ -39,6 +40,31 @@ public class UserDetailsDao {
 		
 	}
 
+	public UserDetails getPasswordNew(String userName) {
+		UserDetails userData = null;
+
+		try(Connection connection =  DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			
+			String query = "SELECT USER_ID, USER_TYPE_ID, EMAIL_ID, PASSWORD, CONTACT_NO, SECURE_PASSWORD, SALT FROM USER_DETAILS\n" + 
+					"WHERE EMAIL_ID = '"+ userName +"';";
+//			System.out.println(query);
+			ResultSet rs = statement.executeQuery(query);
+
+			while(rs.next()) {
+				userData = new UserDetails(rs.getInt("USER_ID"),rs.getInt("USER_TYPE_ID"),rs.getString("EMAIL_ID"),rs.getString("PASSWORD"),rs.getInt("CONTACT_NO"),rs.getString("SECURE_PASSWORD"),rs.getString("SALT"));
+			}
+						
+		} 
+		catch (SQLException e) {
+			userData = null;
+			e.printStackTrace();
+		}
+		
+		return userData;
+
+	}
+	
 	public ArrayList<UserDetailsWrapper> getUserDetails() {
 		
 		ArrayList<UserDetailsWrapper> userDetailsList = new ArrayList<UserDetailsWrapper>();
@@ -96,6 +122,37 @@ public class UserDetailsDao {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	
+public TestTable getDecryptedPassword(String userName) {
+	
+		TestTable userDetailsList = null;
+		
+		try(Connection connection =  DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			
+			String query = "SELECT USERNAME, PASSWORD, SALT FROM TEST_TABLE "
+					+ "WHERE USERNAME = '"+ userName +"';\n" + 
+					"";
+			System.out.println(query);
+			ResultSet rs = statement.executeQuery(query);
+
+			while(rs.next()) {
+				userDetailsList = new TestTable(
+						rs.getString("USERNAME"),
+						rs.getString("PASSWORD"),
+						rs.getString("SALT"));
+			}
+						
+		} 
+		catch (SQLException e) {
+			userDetailsList = null;
+			e.printStackTrace();
+		}
+		
+		return userDetailsList;
 	}
 	
 }

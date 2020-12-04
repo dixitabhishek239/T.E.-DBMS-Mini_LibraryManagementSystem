@@ -38,4 +38,38 @@ public class NewUserDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void createNew(UserDetails userDetailsNew) {
+		try(Connection connection = DriverManager.getConnection(ConnectionManager.getDbUrl(),ConnectionManager.getUser(),ConnectionManager.getPass())){
+			Statement statement = connection.createStatement();
+			String query = "INSERT INTO USER_DETAILS \n" + 
+					"( \n" + 
+					"	USER_NAME,\n" + 
+					"    USER_TYPE_ID,\n" + 
+					"    EMAIL_ID,\n" + 
+					"    PASSWORD,\n" + 
+					"    CONTACT_NO,\n" + 
+					"    DEPARTMENT_ID,\n" +
+					"    SECURE_PASSWORD,\n" +
+					"    SALT\n" +
+					")\n" + 
+					"VALUES\n" + 
+					"(\n" + 
+					"	'"+ userDetailsNew.getUserName() +"',\n" + 
+					"    "+ userDetailsNew.getUserTypeId() +",\n" + 
+					"    '"+ userDetailsNew.getEmail() +"',\n" + 
+					"    '"+ userDetailsNew.getPassword() +"',\n" + 
+					"    "+ userDetailsNew.getContactNo() +",\n" + 
+					"    "+ userDetailsNew.getDepartmentId() +",\n" +
+					"    '"+ userDetailsNew.getSecurePassword() +"',\n" +
+					"    '"+ userDetailsNew.getSalt() +"'\n" +
+					")";
+//			System.out.println(query);
+			statement.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

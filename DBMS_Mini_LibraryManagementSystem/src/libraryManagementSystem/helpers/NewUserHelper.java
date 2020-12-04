@@ -8,5 +8,8 @@ public class NewUserHelper {
 	public void create(UserDetails userDetails) {
 		new NewUserDao().create(userDetails);
 	}
+	public void createNew(UserDetails userDetailsNew) {
+		new NewUserDao().createNew(userDetailsNew);
+	}
 
 }

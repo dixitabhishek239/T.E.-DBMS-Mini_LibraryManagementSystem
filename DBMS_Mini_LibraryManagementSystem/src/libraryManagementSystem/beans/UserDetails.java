@@ -9,6 +9,37 @@ public class UserDetails {
 	String password;
 	int departmentId;
 	Integer contactNo;
+	String securePassword;
+	String salt;
+	
+	
+	
+	public String getSecurePassword() {
+		return securePassword;
+	}
+	public void setSecurePassword(String securePassword) {
+		this.securePassword = securePassword;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
+	
+	public UserDetails(String userName, int userTypeId, String email, String password, int departmentId,
+			Integer contactNo, String securePassword, String salt) {
+		super();
+		this.userName = userName;
+		this.userTypeId = userTypeId;
+		this.email = email;
+		this.password = password;
+		this.departmentId = departmentId;
+		this.contactNo = contactNo;
+		this.securePassword = securePassword;
+		this.salt = salt;
+	}
 	
 	
 	public int getDepartmentId() {
@@ -53,6 +84,18 @@ public class UserDetails {
 		this.password = password;
 		this.departmentId = departmentId;
 		this.contactNo = contactNo;
+		
+	}
+	public UserDetails(int userId, int userTypeId, String email, String password, int contactNo, String securePassword, String salt) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.userId = userId;
+		this.userTypeId = userTypeId;
+		this.email = email;
+		this.password = password;
+		this.contactNo = contactNo;
+		this.securePassword = securePassword;
+		this.salt = salt;
 		
 	}
 	public int getUserId() {

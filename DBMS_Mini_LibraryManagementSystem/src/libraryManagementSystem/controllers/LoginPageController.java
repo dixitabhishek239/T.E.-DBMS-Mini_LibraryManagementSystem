@@ -39,6 +39,7 @@ import javafx.util.Pair;
 import libraryManagementSystem.beans.UserDetails;
 import libraryManagementSystem.beans.UserType;
 import libraryManagementSystem.helpers.IssuedBookHelper;
+import libraryManagementSystem.helpers.NewUserHelper;
 import libraryManagementSystem.helpers.UserDetailsHelper;
 import libraryManagementSystem.helpers.UserTypeHelper;
 import javafx.scene.control.Hyperlink;
@@ -47,11 +48,14 @@ import javafx.scene.control.Label;
 public class LoginPageController {
 		
 	UserDetails userDetails;
+	UserDetails userDetails1;
+
 	
 	private Integer userTypeId;
 	private String userName;
 	private String userPassword;
 	private Integer userId;
+	private String enteredUserPassword;
 	
     @FXML
     private ChoiceBox<String> loginDropDown;
@@ -76,8 +80,34 @@ public class LoginPageController {
     void LoginClick(ActionEvent event) {
     	
     	userName = usernameId.getText().toUpperCase();
-    	userPassword = passwordId.getText().toUpperCase();
-    	    		
+    	userPassword = passwordId.getText();
+    	
+    	userDetails1 = new UserDetailsHelper().getPasswordNew(userName);
+    	
+    	 // User provided password to validate
+        String providedPassword = userPassword;
+                
+        // Encrypted and Base64 encoded password read from database
+        String securePassword = "";
+        securePassword = userDetails1.getSecurePassword();
+//        System.out.println("Secured Password : "+securePassword);    
+        // Salt value stored in database 
+        String salt1 = userDetails1.getSalt();
+//        System.out.println("Salt : "+salt1);
+        boolean passwordMatch = PasswordUtils.verifyUserPassword(providedPassword, securePassword, salt1);
+        
+//        if(passwordMatch) 
+//        {
+//            System.out.println("Provided user password " + providedPassword + " is correct.");
+//        } else {
+//            System.out.println("Provided password is incorrect");
+//        }        		
+        
+    	
+//    	userPassword = passwordId.getText().toUpperCase();   // encrypted form
+//    	userPassword = "";  		
+    	
+    	
     	if(userName.equals("") || userPassword.equals("")) {
     		
     		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
@@ -100,8 +130,7 @@ public class LoginPageController {
     		UserDetails userDetails = new UserDetailsHelper().getPassword(userName);
     	    
     		if(userDetails==null) {
-    			//System.out.println("User DOESN'T EXIST.");
-    			
+    			//System.out.println("User DOESN'T EXIST.");		
         		ButtonType ok = new ButtonType("ok", ButtonBar.ButtonData.OK_DONE);
         		Alert alert = new Alert(AlertType.WARNING,
         		        "User DOESN'T EXIST.",
@@ -109,19 +138,18 @@ public class LoginPageController {
 
         		alert.setTitle("Date format warning");
         		Optional<ButtonType> result = alert.showAndWait();
-
         		if (result.get() == ok) {
         		    usernameId.clear();
         		    passwordId.clear();
         		}
-
     			
     		}
     		else {
     			
         	    userId = userDetails.getUserId();
 
-       			if(userDetails.getPassword().equals(userPassword)) {
+//       			if(userDetails.getPassword().equals(userPassword)) {
+       			if(passwordMatch) {
 	        		if(userTypeId==userDetails.getUserTypeId() && userTypeId==1) {
 	        			
 	        	    	Parent myNewScene = null;
@@ -240,7 +268,7 @@ public class LoginPageController {
 	    	        		Alert alert = new Alert(AlertType.WARNING,
 	    	        		        "User DOESN'T EXIST.",
 	    	        		        ok);
-	
+	    	        		
 	    	        		alert.setTitle("Date format warning");
 	    	        		Optional<ButtonType> result = alert.showAndWait();
 	
